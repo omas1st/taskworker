@@ -1,0 +1,13 @@
+.admin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: #c8e6c9;
+}
+.admin-nav a,
+.admin-nav button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}

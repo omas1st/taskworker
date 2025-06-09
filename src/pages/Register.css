@@ -1,0 +1,143 @@
+/* Register.css */
+
+.register-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+.register-form > * {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.register-form select,
+.register-form input {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.register-form select:focus,
+.register-form input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+.register-form select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+  padding-right: 45px;
+}
+
+.register-form button {
+  background: linear-gradient(135deg, #4a67d7, #3a56c0);
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 6px rgba(58, 86, 192, 0.2);
+}
+
+.register-form button:hover {
+  background: linear-gradient(135deg, #3a56c0, #2e46a0);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(58, 86, 192, 0.25);
+}
+
+.register-form button:active {
+  transform: translateY(0);
+}
+
+/* React Select Customization */
+.register-form .react-select__control {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  min-height: 52px;
+  transition: all 0.3s ease;
+}
+
+.register-form .react-select__control--is-focused {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+.register-form .react-select__value-container {
+  padding: 8px 15px;
+}
+
+.register-form .react-select__placeholder {
+  color: #999;
+}
+
+.register-form .react-select__indicator {
+  padding: 8px;
+}
+
+.register-form .react-select__menu {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Gender and Profile Type Select Styling */
+.register-form select[name="gender"],
+.register-form select[name="profileType"] {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+/* Password fields styling */
+.register-form input[type="password"] {
+  letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .register-form {
+    padding: 1.8rem;
+    margin: 1.5rem;
+  }
+  
+  .register-form > * {
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* Focus and hover states */
+.register-form select:hover,
+.register-form input:hover {
+  border-color: #b3b3b3;
+}
+
+/* Placeholder styling */
+::placeholder {
+  color: #a0a0a0;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #a0a0a0;
+}
+
+::-ms-input-placeholder {
+  color: #a0a0a0;
+}

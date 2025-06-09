@@ -1,0 +1,208 @@
+/* ServiceCharge.css */
+
+/* Base styles */
+.service-charge {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Heading */
+.service-charge h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-size: 2.2rem;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.service-charge h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  border-radius: 2px;
+}
+
+/* Details section */
+.details {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  border: 1px solid #eaeff5;
+}
+
+.details p {
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #4a5568;
+  font-size: 1.05rem;
+}
+
+.details p strong {
+  color: #2c3e50;
+}
+
+/* Wallet info section */
+.wallet-info {
+  background: linear-gradient(to right, #f8fafc, #f1f5f9);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 25px;
+  border-left: 4px solid #3498db;
+}
+
+.wallet-info h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.wallet-info p {
+  margin: 10px 0;
+  color: #4a5568;
+}
+
+.wallet-info code {
+  display: inline-block;
+  background-color: #edf2f7;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  color: #2d3748;
+  word-break: break-all;
+  margin-top: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Amount display */
+.amount-display {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #edf2f7;
+  margin-bottom: 15px;
+}
+
+.amount-display p {
+  margin: 5px 0;
+  font-size: 1.1rem;
+}
+
+.amount-display .service-fee {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* Verify PIN section */
+.verify-pin {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeff5;
+}
+
+.verify-pin input {
+  padding: 14px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.verify-pin input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+.verify-pin input::placeholder {
+  color: #a0aec0;
+  font-weight: normal;
+  letter-spacing: normal;
+}
+
+.verify-pin button {
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(50, 152, 219, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.verify-pin button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(50, 152, 219, 0.4);
+}
+
+.verify-pin button:active {
+  transform: translateY(0);
+}
+
+.verify-pin button:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .service-charge {
+    padding: 20px 15px;
+  }
+  
+  .details, .verify-pin {
+    padding: 20px;
+  }
+  
+  .service-charge h2 {
+    font-size: 1.8rem;
+  }
+  
+  .amount-display {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Animation for better UX */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.details, .verify-pin {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Focus state for accessibility */
+*:focus-visible {
+  outline: 3px solid #3498db;
+  outline-offset: 2px;
+}

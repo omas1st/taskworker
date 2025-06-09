@@ -1,0 +1,13 @@
+.completed-tasks {
+  padding: 1.5rem;
+}
+.completed-tasks ul {
+  list-style: none;
+  padding: 0;
+}
+.completed-tasks li {
+  margin-bottom: 0.75rem;
+}
+.completed-tasks button {
+  margin-left: 0.5rem;
+}

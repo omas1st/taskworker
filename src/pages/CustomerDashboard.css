@@ -1,0 +1,222 @@
+/* CustomerDashboard.css */
+
+.customer-dash {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@media (min-width: 900px) {
+  .customer-dash {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.customer-dash h2 {
+  grid-column: 1 / -1;
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #f0f4f8;
+}
+
+.message-box, .notifications {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+  padding: 2.2rem;
+  transition: transform 0.3s ease;
+}
+
+.message-box:hover, .notifications:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.message-box h3, .notifications h3 {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.message-box textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 1.2rem;
+  border: 1px solid #e0e6ed;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  font-family: inherit;
+}
+
+.message-box textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+.message-box button {
+  background: linear-gradient(135deg, #4a67d7, #3a56c0);
+  color: white;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin-left: auto;
+  box-shadow: 0 4px 12px rgba(58, 86, 192, 0.2);
+}
+
+.message-box button:hover {
+  background: linear-gradient(135deg, #3a56c0, #2e46a0);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(58, 86, 192, 0.3);
+}
+
+.message-box button:active {
+  transform: translateY(0);
+}
+
+.notifications {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.notifications > p {
+  text-align: center;
+  color: #718096;
+  font-style: italic;
+  padding: 2rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.notifications ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 500px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.notifications li {
+  padding: 1.4rem 1.2rem;
+  border-bottom: 1px solid #edf2f7;
+  transition: background-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.notifications li:last-child {
+  border-bottom: none;
+}
+
+.notifications li:hover {
+  background-color: #f8fafc;
+}
+
+.notifications li strong {
+  color: #4a5568;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 1.1rem;
+}
+
+.notifications li span {
+  color: #4a5568;
+  line-height: 1.6;
+  display: block;
+  padding-left: 1rem;
+  border-left: 3px solid #e2e8f0;
+  margin-left: 0.5rem;
+}
+
+/* Custom scrollbar for notifications */
+.notifications ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+.notifications ul::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.notifications ul::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+.notifications ul::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* System message styling */
+.notifications li strong[data-system="true"] {
+  color: #2c5282;
+}
+
+/* Withdraw message styling */
+.notifications li span[data-withdraw="true"] {
+  color: #2b6cb0;
+  font-weight: 500;
+  border-left-color: #90cdf4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .customer-dash {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .customer-dash h2 {
+    font-size: 1.8rem;
+  }
+  
+  .message-box, .notifications {
+    padding: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-dash {
+    padding: 0 1rem;
+  }
+  
+  .message-box textarea {
+    min-height: 150px;
+  }
+}
+
+/* Animation for new messages */
+@keyframes highlight {
+  0% { background-color: rgba(74, 103, 215, 0.1); }
+  100% { background-color: transparent; }
+}
+
+.notifications li.new-message {
+  animation: highlight 1.5s ease;
+}

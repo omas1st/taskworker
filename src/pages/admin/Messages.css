@@ -1,0 +1,13 @@
+.admin-messages {
+  padding: 1.5rem;
+}
+.admin-messages input,
+.admin-messages textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+.admin-messages button {
+  margin-bottom: 1rem;
+}

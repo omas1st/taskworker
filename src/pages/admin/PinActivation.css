@@ -1,0 +1,13 @@
+.pin-activation {
+  padding: 1.5rem;
+}
+.pin-activation input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+.pin-activation button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+}

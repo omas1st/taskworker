@@ -1,0 +1,11 @@
+.edit-user {
+  padding: 1.5rem;
+}
+.edit-user form {
+  display: flex;
+  gap: 1rem;
+}
+.edit-user input {
+  width: 150px;
+  padding: 0.5rem;
+}

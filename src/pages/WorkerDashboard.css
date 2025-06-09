@@ -1,0 +1,125 @@
+/* WorkerDashboard.css */
+.worker-dash {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.worker-dash h2 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 0.5rem;
+}
+
+.wallet {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  max-width: 500px;
+  border: 1px solid #e9ecef;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wallet:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.wallet h3 {
+  color: #3498db;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.wallet p {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 1.5rem 0;
+  color: #2ecc71;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.wallet button {
+  background: linear-gradient(to right, #3498db, #2c3e50);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wallet button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(to right, #2980b9, #1a252f);
+}
+
+.wallet button:active {
+  transform: translateY(1px);
+}
+
+/* Animation for balance */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.wallet p {
+  animation: pulse 1.5s ease-in-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .worker-dash {
+    padding: 1.5rem;
+  }
+  
+  .wallet {
+    padding: 1.5rem;
+  }
+  
+  .wallet p {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .worker-dash {
+    padding: 1rem;
+  }
+  
+  .worker-dash h2 {
+    font-size: 1.75rem;
+  }
+  
+  .wallet {
+    padding: 1.25rem;
+  }
+  
+  .wallet p {
+    font-size: 2rem;
+  }
+  
+  .wallet button {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,10 @@
+.admin-tasks-page {
+  padding: 1.5rem;
+}
+.admin-tasks-page ul {
+  list-style: none;
+  padding: 0;
+}
+.admin-tasks-page li {
+  margin-bottom: 0.75rem;
+}

@@ -1,0 +1,19 @@
+.admin-users-page {
+  padding: 1.5rem;
+}
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.users-table th,
+.users-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+.users-table th {
+  background: #f4f4f4;
+}
+.error {
+  color: red;
+}

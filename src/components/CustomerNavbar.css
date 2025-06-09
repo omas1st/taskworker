@@ -1,0 +1,12 @@
+.customer-nav {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  background: #ffe0b2;
+}
+.customer-nav a,
+.customer-nav button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}

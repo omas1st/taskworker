@@ -1,0 +1,17 @@
+.admin-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  border: 1px solid #ccc;
+}
+.admin-login-form input,
+.admin-login-form button {
+  padding: 0.5rem;
+}

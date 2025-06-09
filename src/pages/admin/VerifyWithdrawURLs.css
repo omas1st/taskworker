@@ -1,0 +1,12 @@
+.verify-withdraw-urls {
+  padding: 1.5rem;
+}
+.verify-withdraw-urls input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+.verify-withdraw-urls button {
+  margin-bottom: 1rem;
+}
