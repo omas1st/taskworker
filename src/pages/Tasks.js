@@ -17,17 +17,12 @@ export default function Tasks() {
 
   const startTask = async (task) => {
     try {
-      // Mark as started on the backend
       await api.post(`/tasks/${task._id}/start`);
-      // Open the external URL directly in a new tab
       const url = task.url.startsWith('http') ? task.url : `https://${task.url}`;
       window.open(url, '_blank');
-      // Update local status
-      setTasks(prev =>
-        prev.map(t =>
-          t._id === task._id ? { ...t, status: 'in-progress' } : t
-        )
-      );
+      // reload tasks so startedAt is set
+      const res = await api.get('/tasks');
+      setTasks(res.data);
     } catch (err) {
       console.error('Error starting task:', err);
       alert(err.response?.data?.msg || 'Cannot start task');
@@ -48,6 +43,22 @@ export default function Tasks() {
     }
   };
 
+  // disable logic: 
+  // - if completed, both buttons disabled
+  // - if in-progress and startedAt older than 72h: start disabled but attempt stays enabled until click
+  const isStartDisabled = (t) => {
+    if (t.status === 'completed') return true;
+    if (t.status === 'in-progress' && t.startedAt) {
+      const startedMs = new Date(t.startedAt).getTime();
+      return (Date.now() - startedMs) >= 72 * 3600 * 1000;
+    }
+    return t.status !== 'not-started';
+  };
+
+  const isAttemptDisabled = (t) => {
+    return t.status !== 'in-progress';
+  };
+
   return (
     <PrivateRoute role="worker">
       <WorkerNavbar />
@@ -62,14 +73,16 @@ export default function Tasks() {
 
               <button
                 onClick={() => startTask(task)}
-                disabled={task.status !== 'not-started'}
+                disabled={isStartDisabled(task)}
               >
-                {task.status === 'not-started' ? 'Start Task' : 'Started'}
+                {task.status === 'not-started' ? 'Start Task'
+                  : task.status === 'in-progress' ? 'Started'
+                  : 'Start Task'}
               </button>
 
               <button
                 onClick={() => attemptTask(task)}
-                disabled={task.status !== 'in-progress'}
+                disabled={isAttemptDisabled(task)}
               >
                 {task.status === 'completed' ? 'Completed' : 'Task Attempted'}
               </button>
