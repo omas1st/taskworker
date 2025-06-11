@@ -10,23 +10,34 @@ export default function Tasks() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    api.get('/tasks')
-      .then(res => setTasks(res.data))
-      .catch(console.error);
+    loadTasks();
   }, []);
 
-  const startTask = async (task) => {
+  const loadTasks = async () => {
     try {
-      await api.post(`/tasks/${task._id}/start`);
-      const url = task.url.startsWith('http') ? task.url : `https://${task.url}`;
-      window.open(url, '_blank');
-      // reload tasks so startedAt is set
       const res = await api.get('/tasks');
       setTasks(res.data);
     } catch (err) {
-      console.error('Error starting task:', err);
-      alert(err.response?.data?.msg || 'Cannot start task');
+      console.error('Error loading tasks:', err);
     }
+  };
+
+  const startTask = async (task) => {
+    // Always attempt to mark started, but ignore "Already started" error
+    try {
+      await api.post(`/tasks/${task._id}/start`);
+    } catch (err) {
+      if (err.response?.data?.msg !== 'Already started') {
+        console.error('Error starting task:', err);
+        alert(err.response?.data?.msg || 'Cannot start task');
+        return;
+      }
+    }
+    // Open the external URL regardless
+    const url = task.url.startsWith('http') ? task.url : `https://${task.url}`;
+    window.open(url, '_blank');
+    // Reload tasks to pick up new timestamps/status
+    loadTasks();
   };
 
   const attemptTask = async (task) => {
@@ -43,16 +54,16 @@ export default function Tasks() {
     }
   };
 
-  // disable logic: 
-  // - if completed, both buttons disabled
-  // - if in-progress and startedAt older than 72h: start disabled but attempt stays enabled until click
   const isStartDisabled = (t) => {
     if (t.status === 'completed') return true;
-    if (t.status === 'in-progress' && t.startedAt) {
+    if (t.startedAt) {
       const startedMs = new Date(t.startedAt).getTime();
-      return (Date.now() - startedMs) >= 72 * 3600 * 1000;
+      if ((Date.now() - startedMs) >= 72 * 3600 * 1000) {
+        return true;
+      }
     }
-    return t.status !== 'not-started';
+    // not-started or in-progress within 72h
+    return false;
   };
 
   const isAttemptDisabled = (t) => {
@@ -75,9 +86,7 @@ export default function Tasks() {
                 onClick={() => startTask(task)}
                 disabled={isStartDisabled(task)}
               >
-                {task.status === 'not-started' ? 'Start Task'
-                  : task.status === 'in-progress' ? 'Started'
-                  : 'Start Task'}
+                {task.status === 'not-started' ? 'Start Task' : 'Started'}
               </button>
 
               <button
